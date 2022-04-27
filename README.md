@@ -30,6 +30,7 @@ itself might be sorted by relevance
 
 - `union[{types}]` Used when the `type` can be one or more primitive
   and/or advanced objects
+- `enum[{enum}]` Used when the `type` is from an enum
 - `snowflake` Used as an alias to `string`, mainly exists because people
   might want to have their own custom implementation of sorts for a
   snowflake type

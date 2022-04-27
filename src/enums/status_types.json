@@ -1,0 +1,9 @@
+{
+    "StatusTypes": {
+        "ONLINE": "online",
+        "DONOTDISTURB": "donotdisturb",
+        "IDLE": "idle",
+        "INVISIBLE": "invisible",
+        "OFFLINE": "offline"
+    }
+}
