@@ -1,0 +1,181 @@
+{
+    "Identify": {
+        "compress": {
+            "type": "bool",
+            "required": false,
+            "nullable": false
+        },
+        "intents": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "large_threshold": {
+            "type": "bool",
+            "required": false,
+            "nullable": false
+        },
+        "presence": {
+            "type": "PresenceUpdate",
+            "required": false,
+            "nullable": false
+        },
+        "properties": {
+            "type": "ConnectionProperties",
+            "required": true,
+            "nullable": false
+        },
+        "shard": {
+            "type": "array[integer]",
+            "required": false,
+            "nullable": false
+        },
+        "token": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "ConnectionProperties": {
+        "$browser": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "$device": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "$os": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "Resume": {
+        "session_id": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "seq": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "token": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "Heartbeat": {
+        "type": "integer",
+        "required": true,
+        "nullable": true
+    },
+    "RequestGuildMembers": {},
+    "UpdateVoiceState": {},
+    "UpdatePresence": {},
+    "Hello": {
+        "_trace": {
+            "type": "array[string]",
+            "required": true,
+            "nullable": false
+        },
+        "heartbeat_interval": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "Ready": {
+        "application": {
+            "type": "Application",
+            "required": true,
+            "nullable": false
+        },
+        "guilds": {
+            "type": "Guild",
+            "required": true,
+            "nullable": false
+        },
+        "session_id": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "shard": {
+            "type": "array[integer]",
+            "required": true,
+            "nullable": false
+        },
+        "user": {
+            "type": "User",
+            "required": true,
+            "nullable": false
+        },
+        "v": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "Resumed": {},
+    "Reconnect": {},
+    "InvalidSession": {},
+    "ChannelCreate": {},
+    "ChannelUpdate": {},
+    "ChannelDelete": {},
+    "ChannelPinsUpdate": {},
+    "ThreadCreate": {},
+    "ThreadUpdate": {},
+    "ThreadDelete": {},
+    "ThreadListSync": {},
+    "ThreadMemberUpdate": {},
+    "ThreadMembersUpdate": {},
+    "GuildCreate": {},
+    "GuildUpdate": {},
+    "GuildDelete": {},
+    "GuildBanAdd": {},
+    "GuildBanRemove": {},
+    "GuildEmojisUpdate": {},
+    "GuildStickersUpdate": {},
+    "GuildIntegrationsUpdate": {},
+    "GuildMemberAdd": {},
+    "GuildMemberRemove": {},
+    "GuildMemberUpdate": {},
+    "GuildMembersChunk": {},
+    "GuildRoleCreate": {},
+    "GuildRoleUpdate": {},
+    "GuildRoleDelete": {},
+    "GuildScheduledEventCreate": {},
+    "GuildScheduledEventUpdate": {},
+    "GuildScheduledEventDelete": {},
+    "GuildScheduledEventUserAdd": {},
+    "GuildScheduledEventUserRemove": {},
+    "IntegrationCreate": {},
+    "IntegrationUpdate": {},
+    "IntegrationDelete": {},
+    "InteractionCreate": {},
+    "InviteCreate": {},
+    "InviteDelete": {},
+    "MessageCreate": {},
+    "MessageUpdate": {},
+    "MessageDelete": {},
+    "MessageDeleteBulk": {},
+    "MessageReactionAdd": {},
+    "MessageReactionRemove": {},
+    "MessageReactionRemoveAll": {},
+    "MessageReactionRemoveEmoji": {},
+    "PresenceUpdate": {},
+    "StageInstanceCreate": {},
+    "StageInstanceDelete": {},
+    "StageInstanceUpdate": {},
+    "TypingStart": {},
+    "UserUpdate": {},
+    "VoiceStateUpdate": {},
+    "VoiceServerUpdate": {},
+    "WebhooksUpdate": {}
+}
