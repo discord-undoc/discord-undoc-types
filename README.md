@@ -36,6 +36,7 @@ These types are just to make life easier
 - `snowflake` Used as an alias to `string`, mainly exists because people
   might want to have their own custom implementation of sorts for a
   snowflake type
+- `timestamp` an `ISO-8601` timestamp
 
 ## The Schema
 

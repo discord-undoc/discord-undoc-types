@@ -146,7 +146,7 @@
             "nullable": false
         },
         "status": {
-            "type": "enum[StatusTypes]",
+            "type": "union[integer, enum[StatusTypes]]",
             "required": true,
             "nullable": false
         }
@@ -311,47 +311,824 @@
             "nullable": false
         }
     },
-    "GuildCreate": {},
-    "GuildUpdate": {},
-    "GuildDelete": {},
-    "GuildBanAdd": {},
-    "GuildBanRemove": {},
-    "GuildEmojisUpdate": {},
-    "GuildStickersUpdate": {},
-    "GuildIntegrationsUpdate": {},
-    "GuildMemberAdd": {},
-    "GuildMemberRemove": {},
-    "GuildMemberUpdate": {},
-    "GuildMembersChunk": {},
-    "GuildRoleCreate": {},
-    "GuildRoleUpdate": {},
-    "GuildRoleDelete": {},
-    "GuildScheduledEventCreate": {},
-    "GuildScheduledEventUpdate": {},
-    "GuildScheduledEventDelete": {},
-    "GuildScheduledEventUserAdd": {},
-    "GuildScheduledEventUserRemove": {},
-    "IntegrationCreate": {},
-    "IntegrationUpdate": {},
-    "IntegrationDelete": {},
-    "InteractionCreate": {},
-    "InviteCreate": {},
-    "InviteDelete": {},
-    "MessageCreate": {},
-    "MessageUpdate": {},
-    "MessageDelete": {},
-    "MessageDeleteBulk": {},
-    "MessageReactionAdd": {},
-    "MessageReactionRemove": {},
-    "MessageReactionRemoveAll": {},
-    "MessageReactionRemoveEmoji": {},
-    "PresenceUpdate": {},
-    "StageInstanceCreate": {},
-    "StageInstanceDelete": {},
-    "StageInstanceUpdate": {},
-    "TypingStart": {},
-    "UserUpdate": {},
-    "VoiceStateUpdate": {},
-    "VoiceServerUpdate": {},
-    "WebhooksUpdate": {}
+    "GuildCreate": {
+        "type": "Guild",
+        "required": true,
+        "nullable": false
+    },
+    "GuildUpdate": {
+        "type": "Guild",
+        "required": true,
+        "nullable": false
+    },
+    "GuildDelete": {
+        "type": "Guild",
+        "required": true,
+        "nullable": false
+    },
+    "GuildBanAdd": {
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "user": {
+            "type": "User",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "GuildBanRemove": {
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "user": {
+            "type": "User",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "GuildEmojisUpdate": {
+        "emojis": {
+            "type": "array[Emoji]",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "GuildStickersUpdate": {
+        "stickers": {
+            "type": "array[Sticker]",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "GuildIntegrationsUpdate": {
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "GuildMemberAdd": {
+        "type": "array[GuildMember]",
+        "required": true,
+        "nullable": false
+    },
+    "GuildMemberRemove": {
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "user": {
+            "type": "User",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "GuildMemberUpdate": {
+        "avatar": {
+            "type": "union[string, null]",
+            "required": true,
+            "nullable": true
+        },
+        "communication_disabled_until": {
+            "type": "union[timestamp, null]",
+            "required": false,
+            "nullable": true
+        },
+        "deaf": {
+            "type": "boolean",
+            "required": false,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "joined_at": {
+            "type": "union[timestamp, null]",
+            "required": true,
+            "nullable": true
+        },
+        "mute": {
+            "type": "boolean",
+            "required": false,
+            "nullable": false
+        },
+        "nick": {
+            "type": "union[string, null]",
+            "required": false,
+            "nullable": true
+        },
+        "pending": {
+            "type": "boolean",
+            "required": false,
+            "nullable": false
+        },
+        "premium_since": {
+            "type": "union[timestamp, null]",
+            "required": false,
+            "nullable": true
+        },
+        "roles": {
+            "type": "array[snowflakes]",
+            "required": true,
+            "nullable": false
+        },
+        "user": {
+            "type": "User",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "GuildMembersChunk": {
+        "chunk_count": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "chunk_index": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "members": {
+            "type": "array[GuildMember]",
+            "required": true,
+            "nullable": false
+        },
+        "not_found": {
+            "type": "array",
+            "required": false,
+            "nullable": false
+        },
+        "nonce": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "presences": {
+            "type": "array[Presence]",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "GuildRoleCreate": {
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "role": {
+            "type": "Role",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "GuildRoleUpdate": {
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "role": {
+            "type": "Role",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "GuildRoleDelete": {
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "role_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "GuildScheduledEventCreate": {
+        "type": "GuildScheduledEvent",
+        "required": true,
+        "nullable": false
+    },
+    "GuildScheduledEventUpdate": {
+        "type": "GuildScheduledEvent",
+        "required": true,
+        "nullable": false
+    },
+    "GuildScheduledEventDelete": {
+        "type": "GuildScheduledEvent",
+        "required": true,
+        "nullable": false
+    },
+    "GuildScheduledEventUserAdd": {
+        "guild_scheduled_event_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "user_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "GuildScheduledEventUserRemove": {
+        "guild_scheduled_event_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "user_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "IntegrationCreate": {
+        "type": "Integration",
+        "required": true,
+        "nullable": false
+    },
+    "IntegrationUpdate": {
+        "type": "Integration",
+        "required": true,
+        "nullable": false
+    },
+    "IntegrationDelete": {
+        "application_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "InteractionCreate": {
+        "type": "Interaction",
+        "required": true,
+        "nullable": false
+    },
+    "InviteCreate": {
+        "channel_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "code": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "created_at": {
+            "type": "timestamp",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "inviter": {
+            "type": "User",
+            "required": false,
+            "nullable": false
+        },
+        "max_age": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "max_uses": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "target_application": {
+            "type": "Application",
+            "required": false,
+            "nullable": false
+        },
+        "target_type": {
+            "type": "integer",
+            "required": false,
+            "nullable": false
+        },
+        "target_user": {
+            "type": "User",
+            "required": false,
+            "nullable": false
+        },
+        "temporary": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        },
+        "uses": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "InviteDelete": {
+        "channel_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "code": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "MessageCreate": {
+        "type": "Message",
+        "required": true,
+        "nullable": false
+    },
+    "MessageUpdate": {
+        "type": "Message",
+        "required": true,
+        "nullable": false
+    },
+    "MessageDelete": {
+        "channel_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "MessageDeleteBulk": {
+        "channel_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "ids": {
+            "type": "array[snowflake]",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "MessageReactionAdd": {
+        "channel_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "emoji": {
+            "type": "Emoji",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "member": {
+            "type": "GuildMember",
+            "required": false,
+            "nullable": false
+        },
+        "message_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "user_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "MessageReactionRemove": {
+        "channel_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "emoji": {
+            "type": "Emoji",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "message_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "user_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "MessageReactionRemoveAll": {
+        "channel_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "message_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "MessageReactionRemoveEmoji": {
+        "channel_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "emoji": {
+            "type": "Emoji",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "message_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "PresenceUpdate": {
+        "activities": {
+            "type": "array[Activity]",
+            "required": true,
+            "nullable": false
+        },
+        "client_status": {
+            "type": "ClientStatus",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "status": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "user": {
+            "type": "User",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "Activity": {
+        "application_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "assets": {
+            "type": "union[ActivityAssets, null]",
+            "required": false,
+            "nullable": true
+        },
+        "buttons": {
+            "type": "union[array[ActivityButtons], null]",
+            "required": false,
+            "nullable": true
+        },
+        "created_at": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "details": {
+            "type": "union[string, null]",
+            "required": false,
+            "nullable": true
+        },
+        "emoji": {
+            "type": "union[ActivityEmoji, null]",
+            "required": false,
+            "nullable": true
+        },
+        "flags": {
+            "type": "union[integer, null]",
+            "required": false,
+            "nullable": true
+        },
+        "instance": {
+            "type": "union[boolean, null]",
+            "required": false,
+            "nullable": true
+        },
+        "name": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "party": {
+            "type": "union[ActivityParty, null]",
+            "required": false,
+            "nullable": true
+        },
+        "secrets": {
+            "type": "union[ActivitySecrets, null]",
+            "required": false,
+            "nullable": true
+        },
+        "state": {
+            "type": "union[string, null]",
+            "required": false,
+            "nullable": true
+        },
+        "timestamps": {
+            "type": "ActivityTimestamps",
+            "required": false,
+            "nullable": false
+        },
+        "type": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "url": {
+            "type": "union[string, null]",
+            "required": false,
+            "nullable": true
+        }
+    },
+    "ActivityAssets": {
+        "large_image": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "large_text": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "small_image": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "small_text": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "ActivityButtons": {
+        "label": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "url": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "ActivityEmoji": {
+        "animated": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "name": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "ActivityParty": {
+        "id": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "size": {
+            "type": "array[integer]",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "ActivitySecrets": {
+        "join": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "spectate": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "match": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "ActivityTimestamps": {
+        "end": {
+            "type": "integer",
+            "required": false,
+            "nullable": false
+        },
+        "start": {
+            "type": "integer",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "StageInstanceCreate": {
+        "type": "StageInstance",
+        "required": true,
+        "nullable": false
+    },
+    "StageInstanceDelete": {
+        "type": "StageInstance",
+        "required": true,
+        "nullable": false
+    },
+    "StageInstanceUpdate": {
+        "type": "StageInstance",
+        "required": true,
+        "nullable": false
+    },
+    "TypingStart": {
+        "channel_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "member": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "timestamp": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "user_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "UserUpdate": {
+        "type": "User",
+        "required": true,
+        "nullable": false
+    },
+    "VoiceStateUpdate": {
+        "type": "VoiceState",
+        "required": true,
+        "nullable": false
+    },
+    "VoiceServerUpdate": {
+        "endpoint": {
+            "type": "union[string, null]",
+            "required": true,
+            "nullable": true
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "timestamp": {
+            "type": "timestamp",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "WebhooksUpdate": {
+        "channel_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "GetGateway": {
+        "url": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "GetGatewayBot": {
+        "shards": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "session_start_limit": {
+            "type": "SessionStartlimit",
+            "required": true,
+            "nullable": false
+        },
+        "url": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        }
+    }
 }
