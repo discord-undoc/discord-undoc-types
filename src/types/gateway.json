@@ -210,16 +210,107 @@
         "required": true,
         "nullable": false
     },
-    "ChannelCreate": {},
-    "ChannelUpdate": {},
-    "ChannelDelete": {},
-    "ChannelPinsUpdate": {},
-    "ThreadCreate": {},
-    "ThreadUpdate": {},
-    "ThreadDelete": {},
-    "ThreadListSync": {},
-    "ThreadMemberUpdate": {},
-    "ThreadMembersUpdate": {},
+    "ChannelCreate": {
+        "type": "Channel",
+        "required": true,
+        "nullable": false
+    },
+    "ChannelUpdate": {
+        "type": "Channel",
+        "required": true,
+        "nullable": false
+    },
+    "ChannelDelete": {
+        "type": "Channel",
+        "required": true,
+        "nullable": false
+    },
+    "ChannelPinsUpdate": {
+        "channel_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "last_pin_timestamp": {
+            "type": "union[timestamp, null]",
+            "required": false,
+            "nullable": true
+        }
+    },
+    "ThreadCreate": {
+        "type": "Channel",
+        "required": true,
+        "nullable": false
+    },
+    "ThreadUpdate": {
+        "type": "Channel",
+        "required": true,
+        "nullable": false
+    },
+    "ThreadDelete": {
+        "type": "Channel",
+        "required": true,
+        "nullable": false
+    },
+    "ThreadListSync": {
+        "channel_id": {
+            "type": "array[snowflake]",
+            "required": false,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "members": {
+            "type": "array[ThreadMember]",
+            "required": true,
+            "nullable": false
+        },
+        "threads": {
+            "type": "array[Channels]",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "ThreadMemberUpdate": {
+        "type": "array[ThreadMember]",
+        "required": true,
+        "nullable": false
+    },
+    "ThreadMembersUpdate": {
+        "added_members": {
+            "type": "array[ThreadMember]",
+            "required": false,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "member_count": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "removed_member_ids": {
+            "type": "array[snowflake]",
+            "required": false,
+            "nullable": false
+        }
+    },
     "GuildCreate": {},
     "GuildUpdate": {},
     "GuildDelete": {},
