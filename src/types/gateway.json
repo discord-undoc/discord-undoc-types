@@ -195,7 +195,11 @@
             "nullable": false
         }
     },
-    "Resumed": {},
+    "Resumed": {
+        "type": null,
+        "required": true,
+        "nullable": true
+    },
     "Reconnect": {},
     "InvalidSession": {},
     "ChannelCreate": {},
