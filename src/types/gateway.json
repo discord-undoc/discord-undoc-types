@@ -889,7 +889,7 @@
             "nullable": true
         },
         "flags": {
-            "type": "union[integer, null]",
+            "type": "union[integer, enum[ActivityFlags], null]",
             "required": false,
             "nullable": true
         },
@@ -924,7 +924,7 @@
             "nullable": false
         },
         "type": {
-            "type": "integer",
+            "type": "union[integer, enum[ActivityTypes]]",
             "required": true,
             "nullable": false
         },
