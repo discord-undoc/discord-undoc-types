@@ -71,7 +71,7 @@
         }
     },
     "Heartbeat": {
-        "type": "integer",
+        "type": "union[integer, null]",
         "required": true,
         "nullable": true
     },
@@ -107,7 +107,28 @@
             "nullable": false
         }
     },
-    "UpdateVoiceState": {},
+    "UpdateVoiceState": {
+        "channel_id": {
+            "type": "union[snowflake, null]",
+            "required": true,
+            "nullable": true
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "self_deaf": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        },
+        "self_mute": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        }
+    },
     "UpdatePresence": {},
     "Hello": {
         "_trace": {
