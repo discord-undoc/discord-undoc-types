@@ -90,7 +90,7 @@ The payload format is not mentioned in any of the files in `./src`\
 But it is understood that you interpret it as this:
 
 ```json
-"Payload": {
+"GatewayPayload": {
     "d": {
         "type": "union[Identify, ConnectionProperties, Resume, Heartbeat, RequestGuildMembers, UpdateVoiceState, UpdatePresence, Hello, Ready, Resumed, Reconnect, InvalidSession, ChannelCreate, ChannelUpdate, ChannelDelete, ChannelPinsUpdate, ThreadCreate, ThreadUpdate, ThreadDelete, ThreadListSync, ThreadMemberUpdate, ThreadMembersUpdate, GuildCreate, GuildUpdate, GuildDelete, GuildBanAdd, GuildBanRemove, GuildEmojisUpdate, GuildStickersUpdate, GuildIntegrationsUpdate, GuildMemberAdd, GuildMemberRemove, GuildMemberUpdate, GuildMembersChunk, GuildRoleCreate, GuildRoleUpdate, GuildRoleDelete, GuildScheduledEventCreate, GuildScheduledEventUpdate, GuildScheduledEventDelete, GuildScheduledEventUserAdd, GuildScheduledEventUserRemove, IntegrationCreate, IntegrationUpdate, IntegrationDelete, InteractionCreate, InviteCreate, InviteDelete, MessageCreate, MessageUpdate, MessageDelete, MessageDeleteBulk, MessageReactionAdd, MessageReactionRemove, MessageReactionRemoveAll, MessageReactionRemoveEmoji, PresenceUpdate, StageInstanceCreate, StageInstanceDelete, StageInstanceUpdate, TypingStart, UserUpdate, VoiceStateUpdate, VoiceServerUpdate, WebhooksUpdate]",
         "required": true,
@@ -99,16 +99,16 @@ But it is understood that you interpret it as this:
     "op": {
         "type": "integer",
         "required": true,
-        "nullable": true
+        "nullable": false
     },
     "s": {
-        "type": "integer",
-        "required": true,
+        "type": "union[integer, null]",
+        "required": false,
         "nullable": true
     },
     "t": {
-        "type": "string",
-        "required": true,
+        "type": "union[string, null]",
+        "required": false,
         "nullable": true
     }
 },
