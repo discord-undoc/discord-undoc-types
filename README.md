@@ -16,7 +16,7 @@ for your Discord API wrapper or bot!
 - `bool`
 - `array[{type}]`
 
-`{}` type can either be a primitive type, or an advanced type
+`{type}` can either be a primitive type, advanced type or a special type
 
 ## Advanced Types
 
@@ -27,6 +27,8 @@ All keys are sorted alphabetically in an advanced type, but the *types*
 itself might be sorted by relevance
 
 ## Special Types
+
+These types are just to make life easier
 
 - `union[{types}]` Used when the `type` can be one or more primitive
   and/or advanced objects
