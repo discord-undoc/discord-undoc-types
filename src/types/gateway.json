@@ -1130,5 +1130,27 @@
             "required": true,
             "nullable": false
         }
+    },
+    "SessionStartlimit": {
+        "max_concurrency": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "remaining": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "reset_after": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "total": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        }
     }
 }
