@@ -75,7 +75,38 @@
         "required": true,
         "nullable": true
     },
-    "RequestGuildMembers": {},
+    "RequestGuildMembers": {
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "limit": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "nonce": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "presences": {
+            "type": "boolean",
+            "required": false,
+            "nullable": false
+        },
+        "query": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "user_ids": {
+            "type": "union[snowflake, array[snowflake]]",
+            "required": false,
+            "nullable": false
+        }
+    },
     "UpdateVoiceState": {},
     "UpdatePresence": {},
     "Hello": {
