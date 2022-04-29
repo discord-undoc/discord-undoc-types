@@ -1,0 +1,116 @@
+{
+    "Application": {
+        "bot_public": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        },
+        "bot_require_code_grant": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        },
+        "cover_image": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "custom_install_url": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "description": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "flags": {
+            "type": "union[integer, enum[ApplicationFlags]]",
+            "required": false,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "icon": {
+            "type": "string",
+            "required": true,
+            "nullable": true
+        },
+        "id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "install_params": {
+            "type": "ApplicationInstallParams",
+            "required": false,
+            "nullable": false
+        },
+        "name": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "owner": {
+            "type": "User",
+            "required": false,
+            "nullable": false
+        },
+        "primary_sku_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "privacy_policy_url": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "rpc_origins": {
+            "type": "array[string]",
+            "required": false,
+            "nullable": false
+        },
+        "slug": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "tags": {
+            "type": "array[string]",
+            "required": false,
+            "nullable": false
+        },
+        "team": {
+            "type": "Team",
+            "required": true,
+            "nullable": true
+        },
+        "terms_of_service_url": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "verify_key": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "ApplicationInstallParams": {
+        "permissions": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "scopes": {
+            "type": "array[string]",
+            "required": true,
+            "nullable": false
+        }
+    }
+}
