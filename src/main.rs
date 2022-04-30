@@ -103,9 +103,9 @@ fn validate(path: &str) {
     for entry in glob(&format!("{}/**/*/*.json", path)).unwrap() {
         match entry {
             Ok(path) => {
-                // dict[str, str | int | bool | dict[str | bool]]
-                let file = std::fs::read_to_string(path).unwrap();
-                let data: serde_json::Value = serde_json::from_str(&file).unwrap();
+                let file = std::fs::read_to_string(&path).unwrap();
+                let data: serde_json::Value =
+                    serde_json::from_str(&file).expect(&format!("failed to parse {:?}", &path));
                 if let Some(body) = data.as_object() {
                     for key in body.keys() {
                         defined_types.insert(key.to_owned());
@@ -147,6 +147,8 @@ fn validate(path: &str) {
             }
         }
     }
+
+    println!("Total failed: {:#?}", failed)
 }
 
 fn validate_type(defined: &HashSet<String>, typ: &str) -> bool {

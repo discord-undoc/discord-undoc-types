@@ -223,5 +223,99 @@
             "required": true,
             "nullable": false
         }
+    },
+    "VoiceState": {
+        "channel_id": {
+            "type": "union[snowflake, null]",
+            "required": true,
+            "nullable": true
+        },
+        "deaf": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "member": {
+            "type": "GuildMember",
+            "required": false,
+            "nullable": false
+        },
+        "mute": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        },
+        "request_to_speak_timestamp": {
+            "type": "union[timestamp, null]",
+            "required": true,
+            "nullable": true
+        },
+        "self_deaf": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        },
+        "self_mute": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        },
+        "self_stream": {
+            "type": "boolean",
+            "required": false,
+            "nullable": false
+        },
+        "self_video": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        },
+        "session_id": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "suppress": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        },
+        "user_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "VoiceRegion": {
+        "custom": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        },
+        "deprecated": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        },
+        "id": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "name": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "optimal": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "Messsage": {
+    "Message": {
         "activity": {
             "type": "MessageActivity",
             "required": false,
@@ -399,6 +399,28 @@
             "nullable": false
         }
     },
+    "EmbedThumbnail": {
+        "height": {
+            "type": "integer",
+            "required": false,
+            "nullable": false
+        },
+        "proxy_url": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "url": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "width": {
+            "type": "integer",
+            "required": false,
+            "nullable": false
+        }
+    },
     "EmbedVideo": {
         "height": {
             "type": "integer",
@@ -435,6 +457,48 @@
         "me": {
             "type": "boolean",
             "required": true,
+            "nullable": false
+        }
+    },
+    "Emoji": {
+        "animated": {
+            "type": "boolean",
+            "required": false,
+            "nullable": false
+        },
+        "available": {
+            "type": "boolean",
+            "required": false,
+            "nullable": false
+        },
+        "id": {
+            "type": "union[snowflake, null]",
+            "required": true,
+            "nullable": true
+        },
+        "managed": {
+            "type": "boolean",
+            "required": false,
+            "nullable": false
+        },
+        "name": {
+            "type": "union[string, null]",
+            "required": true,
+            "nullable": true
+        },
+        "require_colons": {
+            "type": "boolean",
+            "required": false,
+            "nullable": false
+        },
+        "roles": {
+            "type": "array[Role]",
+            "required": false,
+            "nullable": false
+        },
+        "user": {
+            "type": "User",
+            "required": false,
             "nullable": false
         }
     },
@@ -513,6 +577,28 @@
         },
         "name": {
             "type": "string",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "ChannelMention": {
+        "guild_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "name": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "type": {
+            "type": "integer",
             "required": true,
             "nullable": false
         }
