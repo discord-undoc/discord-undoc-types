@@ -1,17 +1,17 @@
 {
     "Identify": {
         "compress": {
-            "type": "bool",
+            "type": "boolean",
             "required": false,
             "nullable": false
         },
         "intents": {
-            "type": "union[integer, enum[Intents]]",
+            "type": "enum[Intents; integer]",
             "required": true,
             "nullable": false
         },
         "large_threshold": {
-            "type": "bool",
+            "type": "boolean",
             "required": false,
             "nullable": false
         },
@@ -146,7 +146,7 @@
             "nullable": false
         },
         "status": {
-            "type": "union[integer, enum[StatusTypes]]",
+            "type": "enum[StatusTypes; integer]",
             "required": true,
             "nullable": false
         }
@@ -196,12 +196,12 @@
         }
     },
     "Resumed": {
-        "type": null,
+        "type": "null",
         "required": true,
         "nullable": true
     },
     "Reconnect": {
-        "type": null,
+        "type": "null",
         "required": true,
         "nullable": true
     },
@@ -274,7 +274,7 @@
             "nullable": false
         },
         "threads": {
-            "type": "array[Channels]",
+            "type": "array[Channel]",
             "required": true,
             "nullable": false
         }
@@ -445,7 +445,7 @@
             "nullable": true
         },
         "roles": {
-            "type": "array[snowflakes]",
+            "type": "array[snowflake]",
             "required": true,
             "nullable": false
         },
@@ -477,7 +477,7 @@
             "nullable": false
         },
         "not_found": {
-            "type": "array",
+            "type": "union[array[string], array[integer]]",
             "required": false,
             "nullable": false
         },
@@ -889,7 +889,7 @@
             "nullable": true
         },
         "flags": {
-            "type": "union[integer, enum[ActivityFlags], null]",
+            "type": "union[enum[ActivityFlags; integer], null]",
             "required": false,
             "nullable": true
         },
@@ -924,7 +924,7 @@
             "nullable": false
         },
         "type": {
-            "type": "union[integer, enum[ActivityTypes]]",
+            "type": "enum[ActivityTypes; integer]",
             "required": true,
             "nullable": false
         },

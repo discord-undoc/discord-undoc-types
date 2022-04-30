@@ -1,7 +1,0 @@
-{
-    "ClientStatus": {
-        "DESKTOP": "desktop",
-        "MOBILE": "mobile",
-        "WEB": "web"
-    }
-}

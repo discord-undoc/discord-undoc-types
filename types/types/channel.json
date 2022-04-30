@@ -16,7 +16,7 @@
             "nullable": false
         },
         "flags": {
-            "type": "union[integer, enum[ChannelFlags]]",
+            "type": "enum[ChannelFlags; integer]",
             "required": false,
             "nullable": false
         },
@@ -121,7 +121,7 @@
             "nullable": false
         },
         "type": {
-            "type": "union[integer, enum[ChannelTypes]]",
+            "type": "enum[ChannelTypes; integer]",
             "required": true,
             "nullable": false
         },
@@ -131,70 +131,20 @@
             "nullable": false
         },
         "video_quality_mode": {
-            "type": "union[integer, enum[ChannelVideoQualityMode]]",
+            "type": "enum[ChannelVideoQualityMode; integer]",
             "required": false,
             "nullable": false
         }
     },
-    "Messsage": {
-        "activity": {
-            "type": "MessageActivity",
-            "required": false,
-            "nullable": false
-        },
-        "application": {
-            "type": "Application",
-            "required": false,
-            "nullable": false
-        },
-        "application_id": {
-            "type": "snowflake",
-            "required": false,
-            "nullable": false
-        },
-        "attachments": {
-            "type": "array[Attachment]",
-            "required": true,
-            "nullable": false
-        },
-        "author": {
-            "type": "User",
-            "required": true,
-            "nullable": false
-        },
-        "channel_id": {
-            "type": "snowflake",
-            "required": true,
-            "nullable": false
-        },
-        "components": {
-            "type": "array[MessageComponent]",
-            "required": false,
-            "nullable": false
-        },
-        "content": {
+    "ChannelOverwrite": {
+        "allow": {
             "type": "string",
             "required": true,
             "nullable": false
         },
-        "edited_timestamp": {
-            "type": "timestamp",
+        "deny": {
+            "type": "string",
             "required": true,
-            "nullable": true
-        },
-        "embeds": {
-            "type": "array[Embed]",
-            "required": true,
-            "nullable": false
-        },
-        "flags": {
-            "type": "union[integer, enum[MessageFlags]]",
-            "required": false,
-            "nullable": false
-        },
-        "guild_id": {
-            "type": "snowflake",
-            "required": false,
             "nullable": false
         },
         "id": {
@@ -202,127 +152,74 @@
             "required": true,
             "nullable": false
         },
-        "interaction": {
-            "type": "MessageInteraction",
-            "required": false,
-            "nullable": false
-        },
-        "member": {
-            "type": "GuildMember",
-            "required": false,
-            "nullable": false
-        },
-        "mention_channels": {
-            "type": "array[ChannelMention]",
-            "required": false,
-            "nullable": false
-        },
-        "mention_everyone": {
-            "type": "boolean",
+        "type": {
+            "type": "enum[ChannelOverwriteType; integer]",
             "required": true,
             "nullable": false
-        },
-        "mention_roles": {
-            "type": "array[Role]",
-            "required": true,
-            "nullable": false
-        },
-        "mentions": {
-            "type": "array[User]",
-            "required": true,
-            "nullable": false
-        },
-        "message_reference": {
-            "type": "MessageReference",
-            "required": false,
-            "nullable": false
-        },
-        "nonce": {
-            "type": "union[integer, string]",
-            "required": false,
-            "nullable": false
-        },
-        "pinned": {
-            "type": "boolean",
-            "required": true,
-            "nullable": false
-        },
-        "reactions": {
-            "type": "array[Reaction]",
-            "required": false,
-            "nullable": false
-        },
-        "referenced_message": {
-            "type": "Message",
-            "required": false,
-            "nullable": false
-        },
-        "sticker_items": {
-            "type": "array[MessageStickerItems]",
-            "required": false,
-            "nullable": false
-        },
-        "stickers": {
-            "type": "array[Sticker]",
-            "required": false,
-            "nullable": false
-        },
-        "thread": {
-            "type": "Channel",
-            "required": false,
-            "nullable": false
-        },
-        "timestamp": {
+        }
+    },
+    "ThreadMetadata": {
+        "archive_timestamp": {
             "type": "timestamp",
             "required": true,
             "nullable": false
         },
-        "tts": {
+        "archived": {
             "type": "boolean",
             "required": true,
             "nullable": false
         },
-        "type": {
-            "type": "union[integer, enum[MessageTypes]]",
+        "auto_archive_duration": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "create_timestamp": {
+            "type": "timestamp",
+            "required": false,
+            "nullable": false
+        },
+        "invitable": {
+            "type": "boolean",
+            "required": false,
+            "nullable": false
+        },
+        "locked": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "ThreadMember": {
+        "flags": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "join_timestamp": {
+            "type": "timestamp",
+            "required": true,
+            "nullable": false
+        },
+        "user_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "FollowedChannel": {
+        "channel_id": {
+            "type": "snowflake",
             "required": true,
             "nullable": false
         },
         "webhook_id": {
             "type": "snowflake",
-            "required": false,
-            "nullable": false
-        }
-    },
-    "MessageReference": {
-        "channel_id": {
-            "type": "snowflake",
-            "required": false,
-            "nullable": false
-        },
-        "fail_if_not_exists": {
-            "type": "boolean",
-            "required": false,
-            "nullable": false
-        },
-        "guild_id": {
-            "type": "snowflake",
-            "required": false,
-            "nullable": false
-        },
-        "message_id": {
-            "type": "snowflake",
-            "required": false,
-            "nullable": false
-        }
-    },
-    "MessageActivity": {
-        "party_id": {
-            "type": "string",
-            "required": false,
-            "nullable": false
-        },
-        "type": {
-            "type": "union[integer, enum[MessageActivityTypes]]",
             "required": true,
             "nullable": false
         }

@@ -1,0 +1,520 @@
+{
+    "Messsage": {
+        "activity": {
+            "type": "MessageActivity",
+            "required": false,
+            "nullable": false
+        },
+        "application": {
+            "type": "Application",
+            "required": false,
+            "nullable": false
+        },
+        "application_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "attachments": {
+            "type": "array[Attachment]",
+            "required": true,
+            "nullable": false
+        },
+        "author": {
+            "type": "User",
+            "required": true,
+            "nullable": false
+        },
+        "channel_id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "components": {
+            "type": "array[MessageComponent]",
+            "required": false,
+            "nullable": false
+        },
+        "content": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "edited_timestamp": {
+            "type": "union[timestamp, null]",
+            "required": true,
+            "nullable": true
+        },
+        "embeds": {
+            "type": "array[Embed]",
+            "required": true,
+            "nullable": false
+        },
+        "flags": {
+            "type": "enum[MessageFlags; integer]",
+            "required": false,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "interaction": {
+            "type": "MessageInteraction",
+            "required": false,
+            "nullable": false
+        },
+        "member": {
+            "type": "GuildMember",
+            "required": false,
+            "nullable": false
+        },
+        "mention_channels": {
+            "type": "array[ChannelMention]",
+            "required": false,
+            "nullable": false
+        },
+        "mention_everyone": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        },
+        "mention_roles": {
+            "type": "array[Role]",
+            "required": true,
+            "nullable": false
+        },
+        "mentions": {
+            "type": "array[User]",
+            "required": true,
+            "nullable": false
+        },
+        "message_reference": {
+            "type": "MessageReference",
+            "required": false,
+            "nullable": false
+        },
+        "nonce": {
+            "type": "union[integer, string]",
+            "required": false,
+            "nullable": false
+        },
+        "pinned": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        },
+        "reactions": {
+            "type": "array[Reaction]",
+            "required": false,
+            "nullable": false
+        },
+        "referenced_message": {
+            "type": "Message",
+            "required": false,
+            "nullable": false
+        },
+        "sticker_items": {
+            "type": "array[StickerItem]",
+            "required": false,
+            "nullable": false
+        },
+        "stickers": {
+            "type": "array[Sticker]",
+            "required": false,
+            "nullable": false
+        },
+        "thread": {
+            "type": "Channel",
+            "required": false,
+            "nullable": false
+        },
+        "timestamp": {
+            "type": "timestamp",
+            "required": true,
+            "nullable": false
+        },
+        "tts": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        },
+        "type": {
+            "type": "enum[MessageTypes; integer]",
+            "required": true,
+            "nullable": false
+        },
+        "webhook_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "MessageReference": {
+        "channel_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "fail_if_not_exists": {
+            "type": "boolean",
+            "required": false,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "message_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "MessageActivity": {
+        "party_id": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "type": {
+            "type": "enum[MessageActivityTypes; integer]",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "Attachment": {
+        "content_type": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "description": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "ephemeral": {
+            "type": "boolean",
+            "required": false,
+            "nullable": false
+        },
+        "filename": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "height": {
+            "type": "integer",
+            "required": false,
+            "nullable": false
+        },
+        "id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "proxy_url": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "size": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "url": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "width": {
+            "type": "integer",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "Embed": {
+        "author": {
+            "type": "EmbedAuthor",
+            "required": false,
+            "nullable": false
+        },
+        "color": {
+            "type": "integer",
+            "required": false,
+            "nullable": false
+        },
+        "description": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "fields": {
+            "type": "array[EmbedField]",
+            "required": false,
+            "nullable": false
+        },
+        "footer": {
+            "type": "EmbedFooter",
+            "required": false,
+            "nullable": false
+        },
+        "image": {
+            "type": "EmbedImage",
+            "required": false,
+            "nullable": false
+        },
+        "provider": {
+            "type": "EmbedProvider",
+            "required": false,
+            "nullable": false
+        },
+        "thumbnail": {
+            "type": "EmbedThumbnail",
+            "required": false,
+            "nullable": false
+        },
+        "timestamp": {
+            "type": "timestamp",
+            "required": false,
+            "nullable": false
+        },
+        "title": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "type": {
+            "type": "enum[EmbedTypes; integer]",
+            "required": false,
+            "nullable": false
+        },
+        "url": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "video": {
+            "type": "EmbedVideo",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "EmbedAuthor": {
+        "icon_url": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "name": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "proxy_icon_url": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "url": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "EmbedField": {
+        "inline": {
+            "type": "boolean",
+            "required": false,
+            "nullable": false
+        },
+        "name": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "value": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "EmbedFooter": {
+        "icon_url": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "proxy_icon_url": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "text": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "EmbedImage": {
+        "height": {
+            "type": "integer",
+            "required": false,
+            "nullable": false
+        },
+        "proxy_url": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "url": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "width": {
+            "type": "integer",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "EmbedProvider": {
+        "name": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "url": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "EmbedVideo": {
+        "height": {
+            "type": "integer",
+            "required": false,
+            "nullable": false
+        },
+        "proxy_url": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "url": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "width": {
+            "type": "integer",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "Reaction": {
+        "count": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "emoji": {
+            "type": "Emoji",
+            "required": true,
+            "nullable": false
+        },
+        "me": {
+            "type": "boolean",
+            "required": true,
+            "nullable": false
+        }
+    },
+    "Sticker": {
+        "asset": {
+            "type": "string",
+            "required": false,
+            "nullable": false
+        },
+        "available": {
+            "type": "boolean",
+            "required": false,
+            "nullable": false
+        },
+        "description": {
+            "type": "union[string, null]",
+            "required": true,
+            "nullable": true
+        },
+        "format_type": {
+            "type": "enum[StickerFormatTypes; integer]",
+            "required": true,
+            "nullable": false
+        },
+        "guild_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "name": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "pack_id": {
+            "type": "snowflake",
+            "required": false,
+            "nullable": false
+        },
+        "sort_value": {
+            "type": "integer",
+            "required": false,
+            "nullable": false
+        },
+        "tags": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        },
+        "type": {
+            "type": "enum[StickerTypes; integer]",
+            "required": true,
+            "nullable": false
+        },
+        "user": {
+            "type": "User",
+            "required": false,
+            "nullable": false
+        }
+    },
+    "StickerItem": {
+        "format_type": {
+            "type": "integer",
+            "required": true,
+            "nullable": false
+        },
+        "id": {
+            "type": "snowflake",
+            "required": true,
+            "nullable": false
+        },
+        "name": {
+            "type": "string",
+            "required": true,
+            "nullable": false
+        }
+    }
+}

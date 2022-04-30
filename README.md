@@ -3,7 +3,7 @@
 A repository full of manually generated hand curated JSON files, which
 contain the API Types that the Discord API returns.
 
-Also did I mention that everything in `./src` can be parsed easily!
+Also did I mention that everything in `./types` can be parsed easily!
 That means you can write a parser to generate classes/structs/enums/etc
 for your Discord API wrapper or bot!
 
@@ -32,7 +32,9 @@ These types are just to make life easier
 
 - `union[{types}]` Used when the `type` can be one or more primitive
   and/or advanced objects
-- `enum[{enum}]` Used when the `type` is from an enum
+- `enum[{enum}; {fallback}]` Used when the `type` is from an enum,
+  `{enum}` is ofc the name of the enum and `{fallback}` is the fallback
+  type
 - `snowflake` Used as an alias to `string`, mainly exists because people
   might want to have their own custom implementation of sorts for a
   snowflake type
