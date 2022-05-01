@@ -1,9 +1,21 @@
 use clap::{arg, command, Command};
 use glob::glob;
+use lazy_static::lazy_static;
 use regex::Regex;
 use std::collections::{BTreeMap, HashSet};
 use std::fs::File;
 use std::io::{BufRead, BufReader};
+
+lazy_static! {
+    static ref REQUIRED_RE: Regex = Regex::new(r#"^\w+\s+[\s\S]+?$"#).unwrap();
+    static ref NULLABLE_RE: Regex = Regex::new(r#"^\w+\s+\?[\s\S]+?$"#).unwrap();
+    static ref NAME_TYPE_RE: Regex =
+        Regex::new(r#"(^[a-z_]*)\??\s+\??([a-zA-Z0-9\s\[\],]*?)$"#).unwrap();
+
+    static ref SPECIAL_RE: Regex = Regex::new(
+        r#"enum\[([^\s;]+); (string|integer|float|boolean)\]|array\[(\w+)\]|(null|string|integer|float|boolean|snowflake|timestamp)"#,
+    ).unwrap();
+}
 
 struct Field {
     typ: String,
@@ -62,21 +74,17 @@ fn main() {
 }
 
 fn generate(prefix: String, file: &str) {
-    let required_re = Regex::new(r#"^\w+\s+[\s\S]+?$"#).unwrap();
-    let nullable_re = Regex::new(r#"^\w+\s+\?[\s\S]+?$"#).unwrap();
-    let name_type_re = Regex::new(r#"(^[a-z_]*)\??\s+\??([a-zA-Z0-9\s\[\],]*?)$"#).unwrap();
-
     let mut fields = BTreeMap::new();
 
     for line in BufReader::new(File::open(file).expect("File couldn't be opened")).lines() {
         let line = line.unwrap().trim().to_owned();
 
-        let nt_cap = name_type_re.captures(&line).unwrap();
+        let nt_cap = NAME_TYPE_RE.captures(&line).unwrap();
         let name = nt_cap.get(1).unwrap().as_str().to_owned();
         let typ = nt_cap.get(2).unwrap().as_str().to_owned();
 
-        let required = required_re.is_match(&line);
-        let nullable = nullable_re.is_match(&line);
+        let required = REQUIRED_RE.is_match(&line);
+        let nullable = NULLABLE_RE.is_match(&line);
 
         fields.insert(
             name,
@@ -162,16 +170,12 @@ fn validate_type(defined: &HashSet<String>, typ: &str) -> bool {
         "timestamp",
     ];
 
-    let special_re = Regex::new(
-        r#"enum\[([^\s;]+); (string|integer|float|boolean)\]|array\[(\w+)\]|(null|string|integer|float|boolean|snowflake|timestamp)"#,
-    ).unwrap();
-
     if defined.contains(typ) || static_allowed.contains(&typ) {
         return true;
     }
 
     if typ.starts_with("enum") {
-        match special_re.captures(typ) {
+        match SPECIAL_RE.captures(typ) {
             Some(cap) => {
                 if defined.contains(cap.get(1).unwrap().as_str()) {
                     return true;
@@ -180,7 +184,7 @@ fn validate_type(defined: &HashSet<String>, typ: &str) -> bool {
             None => panic!(""),
         }
     } else if typ.starts_with("array") {
-        match special_re.captures(typ) {
+        match SPECIAL_RE.captures(typ) {
             Some(cap) => {
                 if defined.contains(cap.get(3).unwrap().as_str())
                     || static_allowed.contains(&cap.get(3).unwrap().as_str())
@@ -191,7 +195,7 @@ fn validate_type(defined: &HashSet<String>, typ: &str) -> bool {
             None => panic!(),
         }
     } else if typ.starts_with("union") {
-        for cap in special_re.captures_iter(typ) {
+        for cap in SPECIAL_RE.captures_iter(typ) {
             if let Some(primitive) = cap.get(4) {
                 if static_allowed.contains(&primitive.as_str()) {
                     return true;

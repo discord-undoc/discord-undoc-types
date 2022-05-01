@@ -8,5 +8,6 @@ edition = "2021"
 [dependencies]
 clap = { version = "3.1.12", features = ["derive", "cargo"] }
 glob = "0.3.0"
+lazy_static = "1.4.0"
 regex = "1.5.5"
 serde_json = "1.0"
